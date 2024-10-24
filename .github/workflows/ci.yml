@@ -33,6 +33,8 @@ jobs:
       - name: Populate cache
         id: populate-cache
         uses: ./.github/actions/cache
+        run: |
+          echo "Cache Hit: ${{ steps.populate-cache.outputs.cache-hit }}"
 
       - name: Download dependencies
         if: steps.populate-cache.outputs.cache-hit != 'true'
@@ -61,6 +63,7 @@ jobs:
           #
           # TODO(#1595): Debug why this step is still necessary after #1564 and
           # maybe remove it.
+          echo "Cache Hit: ${{ steps.populate-cache.outputs.cache-hit }}"
           echo "hey this is the installation"
           cargo metadata                             &> /dev/null &
           cargo install cargo-readme --version 3.2.0 &> /dev/null &
