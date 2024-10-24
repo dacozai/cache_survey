@@ -38,9 +38,16 @@ jobs:
       - name: Populate cache
         id: populate-cache
         uses: ./.github/actions/cache
+      
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: |
+            ~/.cargo/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.toml') }}
 
       - name: Download dependencies
-        if: steps.populate-cache.outputs.cache-hit != 'true'
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           # Ensure all dependencies are downloaded - both for our crates and for
           # tools we use in CI. We don't care about these tools succeeding for
