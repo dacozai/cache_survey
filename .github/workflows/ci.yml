@@ -61,13 +61,9 @@ jobs:
           #
           # TODO(#1595): Debug why this step is still necessary after #1564 and
           # maybe remove it.
-          cargo add -p zerocopy-derive 'syn@=2.0.79' &> /dev/null
-
-          cargo check --workspace --tests            &> /dev/null &
           cargo metadata                             &> /dev/null &
           cargo install cargo-readme --version 3.2.0 &> /dev/null &
           cargo install --locked kani-verifier       &> /dev/null &
           cargo install cargo-nextest                &> /dev/null &
-          cargo kani setup                           &> /dev/null &
 
           wait
