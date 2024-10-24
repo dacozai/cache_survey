@@ -26,6 +26,7 @@ jobs:
     
     - name: Test
       run: |
+        echo $(pwd)
         just test
 
   generate_cache:
@@ -64,6 +65,7 @@ jobs:
           #
           # TODO(#1595): Debug why this step is still necessary after #1564 and
           # maybe remove it.
+          echo "hey this is the installation"
           cargo metadata                             &> /dev/null &
           cargo install cargo-readme --version 3.2.0 &> /dev/null &
           cargo install --locked kani-verifier       &> /dev/null &
