@@ -7,12 +7,12 @@
 # those terms.
 
 name: Cache
+id: cache
 description: 'Caches cargo dependencies'
 runs:
   using: composite
   steps:
     - uses: actions/cache@v4
-      id: cache
       env:
         cache-name: cache-cargo
       with:
