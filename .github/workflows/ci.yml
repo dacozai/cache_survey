@@ -38,6 +38,7 @@ jobs:
         uses: ./.github/actions/cache
 
       - name: Download dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           # Ensure all dependencies are downloaded - both for our crates and for
           # tools we use in CI. We don't care about these tools succeeding for
