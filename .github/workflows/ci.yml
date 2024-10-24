@@ -33,7 +33,6 @@ jobs:
       - uses: ./.github/actions/cache
       
       - name: dummy
-        needs: populate-cache
         run: |
           echo "Cache Hit: ${{ steps.cache.outputs.cache-hit }}"
 
