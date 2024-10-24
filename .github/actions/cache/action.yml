@@ -10,10 +10,6 @@ name: Cache
 description: 'Caches cargo dependencies'
 runs:
   using: composite
-  outputs:
-    cache-hit: # Define an output to expose
-      description: 'Whether the cache was restored'
-      value: ${{ steps.cache.outputs.cache-hit }}
   steps:
     - uses: actions/cache@v4
       env:
