@@ -37,6 +37,7 @@ jobs:
       - name: dummy
         run: |
           echo "Cache Hit: ${{ steps.populate-cache.outputs.cache-hit }}"
+          echo "Cache Hit: ${{ steps.cache.outputs.cache-hit }}"
 
       - name: Download dependencies
         if: steps.populate-cache.outputs.cache-hit != 'true'
