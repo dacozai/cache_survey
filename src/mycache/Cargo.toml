@@ -1,0 +1,8 @@
+[package]
+name = "mycache"
+version.workspace = true
+authors.workspace = true
+publish.workspace = true
+edition.workspace = true
+
+[dependencies]

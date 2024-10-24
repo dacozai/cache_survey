@@ -1,0 +1,68 @@
+[workspace.package]
+version = "0.1.0"
+authors = ["Eden Chen <eden.chen@bath.edu>"]
+publish = false
+edition = "2021"
+
+[workspace]
+resolver = "2"
+members = [
+    "src/mycache", 
+]
+
+[workspace.dependencies]
+# type helper
+derive_more = "1.0.0"
+lazy_static = "1.5.0"
+once_cell = "1.19.0"
+static_assertions = "1.1.0"
+uuid = {version = "1.10.0", features = ["v4", "fast-rng"]}
+
+# runtime
+tokio = { version = "1.40.0", features = ["full", "rt-multi-thread", "macros"] }
+async-trait = "0.1.81"
+
+# serialization
+prost = "0.13.2"
+serde = { version = "1.0.209", features = ["derive", "rc"] }
+serde_json = "1.0.127"
+base64 = "0.22.1"
+
+# chrono
+chrono = { version = "0.4.38", features = ["default", "serde"] }
+chrono-tz = "0.9.0"
+
+# http
+hyper = "1.4.1"
+reqwest = { version = "0.12.7", features = ["blocking", "json"] }
+
+# error
+anyhow = "1.0.86"
+anyerror = "0.1.12"
+thiserror = "1.0.63"
+
+# log
+log = "0.4.22"
+
+# DB
+sqlx = { version = "0.8.1", features = [ "chrono", "runtime-tokio", "mysql", "postgres", "json"] }
+mysql = "25.0.1"
+clickhouse = { version = "0.12.2", features = ["lz4", "tls", "uuid", "time", "test-util"] }
+klickhouse = "0.13.0"
+
+# Utils
+rand = "0.8.5"
+rust_decimal = "1.36.0"
+rust_decimal_macros = "1.36.0"
+clap = "4.5.16"
+
+# Externals
+csv = "1.3.0"
+
+# Kernel
+libc = "0.2.159"
+
+[profile.release]
+debug = true
+[profile.bench]
+debug = true
