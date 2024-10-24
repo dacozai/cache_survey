@@ -7,12 +7,16 @@
 # those terms.
 
 name: Cache
-id: cache
 description: 'Caches cargo dependencies'
+outputs:
+  cache-hit:
+    description: "Cache Hit"
+    value: ${{ steps.cache.outputs.cache-hit }}
 runs:
   using: composite
   steps:
     - uses: actions/cache@v4
+      id: cache
       env:
         cache-name: cache-cargo
       with:
