@@ -35,9 +35,9 @@ jobs:
         uses: ./.github/actions/cache
       
       - name: dummy
+        needs: populate-cache
         run: |
-          echo "Cache Hit: ${{ steps.populate-cache.outputs.cache-hit }}"
-          echo "Cache Hit: ${{ steps.cache.outputs.cache-hit }}"
+          echo "Cache Hit: ${{ needs.populate-cache.outputs.cache-hit }}"
 
       - name: Download dependencies
         if: steps.populate-cache.outputs.cache-hit != 'true'
